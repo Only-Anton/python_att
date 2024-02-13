@@ -34,3 +34,27 @@ for i in range(20):
 data = pd.DataFrame(mat, columns=['human','robot'])
 data.head()
 
+#---------------------------------------------------------------------------------------------------
+
+# еще как вариант, создать два списка из 0 и 1 и объединить их
+
+import pandas as pd
+import random
+lst = ['robot'] * 10
+lst += ['human'] * 10
+random.shuffle(lst)
+
+rob = []
+hum = []
+for i in range(20): 
+    if lst[i] == 'human':
+        rob.append(0)
+        hum.append(1)
+    else:
+        rob.append(1)
+        hum.append(0)
+h = pd.DataFrame(hum, columns=['human'])
+r = pd.DataFrame(rob, columns=['robot'])
+data = pd.concat([h, r], axis=1)
+data.head()
+
